@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: rgba(28, 25, 207, 0.479);">
+<Style>
+    h3 {
+        text-align: center;
+        font-size: xx-large;
+        color: wheat;
+    }
+
+    button {
+        align-items: center;
+        text-align: center;
+        font-size: xx-large;
+        background-color: rgba(64, 224, 208, 0.39);
+        color: white;
+    }
+
+    p {
+        color: rgb(154, 255, 71);
+
+    }
+</Style>
+
+<head style="position: unset; font-size: xx-large;">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<h1>Bored?</h1>
+<div id="container"></div>
+<button id="button" onclick="renderActivity()" style="align-items: center;"> Click me!</button>
+
+<form>
+    <label> </label>
+</form>
+
+<body>
+
+</body>
+<script>
+
+    let htmlBody = ""
+    function renderActivity() {
+        fetch('https://www.boredapi.com/api/activity')
+            .then(response => {
+                // we get response without the body yet
+                // we check if it was a success
+                if (response.status === 200) {
+                    console.log("Fetched from API successfully")
+                    return response.json()
+
+                } else {
+                    throw new Error(response.statusText)
+                    console.log("Fetched from API Horribly")
+                }
+
+            }).then(data => {
+                activity(data)
+
+
+            });
+
+
+
+
+    }
+
+
+    // renderActivity()
+    function activity(data) {
+
+
+        let htmlSegment = `<div>
+    <hr>
+    <h3  > ${data.activity}</h3> </div>
+    <div>  <p style="text-align: left;" font-size="xx-larger";> What is this? <strong>It's a ${data.type} activity!</strong> </p></div>
+    <div>    <p > How many participants?<strong> Probably ${data.participants} is enough.</strong></p></div>
+                   <div>  <p> Will it me cost any amount of money? <strong>hmm maybe about ${data.price}$ but who knows.</strong></p></div>
+                                        <div>  <p> How accessible is this activity in terms of numbers? <strong>${data.accessibility} </strong></div>
+                                            <div> <p> Anyone websites or links you'd recommend? ${data.link}</div>
+   <hr>
+</div>`;
+
+        htmlBody += htmlSegment
+
+        // console.log(htmlBody)
+
+        const container = document.getElementById("container")
+
+        container.innerHTML = htmlBody
+    }
+    function clear(data) {
+        let htmlSegment = "";
+        const deleteContainer = document.getElementsByClassName(".container")
+        container.htmlBody -= htmlBody
+    }
+
+</script>
+
+</html>

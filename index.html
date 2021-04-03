@@ -13,11 +13,17 @@
         font-size: xx-large;
         background-color: rgba(64, 224, 208, 0.39);
         color: white;
+        top: 50%;
+        left: 50%
     }
 
     p {
         color: rgb(154, 255, 71);
 
+    }
+
+    .center {
+        text-align: center;
     }
 </Style>
 
@@ -28,10 +34,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<h1>Bored?</h1>
-<div id="container"></div>
-<button id="button" onclick="renderActivity()" style="align-items: center;"> Click me!</button>
-
+<div class="center">
+    <h1 style="text-align: center;">Bored?</h1>
+    <div id="container"></div>
+    <button id="button" onclick="renderActivity()" style="text-align: center;"> Click me!</button>
+</div>
 <form>
     <label> </label>
 </form>
@@ -75,7 +82,7 @@
         let htmlSegment = `<div>
     <hr>
     <h3  > ${data.activity}</h3> </div>
-    <div>  <p style="text-align: left;" font-size="xx-larger";> What is this? <strong>It's a ${data.type} activity!</strong> </p></div>
+    <div >  <p style="style="align-items: center;" font-size="xx-larger";> What is this? <strong>It's a ${data.type} activity!</strong> </p></div>
     <div>    <p > How many participants?<strong> Probably ${data.participants} is enough.</strong></p></div>
                    <div>  <p> Will it me cost any amount of money? <strong>hmm maybe about ${data.price}$ but who knows.</strong></p></div>
                                         <div>  <p> How accessible is this activity in terms of numbers? <strong>${data.accessibility} </strong></div>
